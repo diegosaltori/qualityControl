@@ -1,7 +1,3 @@
-Claro! Aqui está um exemplo de um arquivo `README.md` moderno e bem estruturado para apresentar a ideia do seu projeto:
-
----
-
 # **App de Gestão de Itens - Projeto React Native**
 
 Este projeto é um aplicativo móvel desenvolvido com React Native para gerenciar e editar itens registrados no banco de dados SQLite. O aplicativo permite que os usuários se cadastrem, façam login, e acessem uma lista de itens com informações detalhadas, podendo editar qualquer item diretamente.
@@ -147,7 +143,3 @@ Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga
 ## **Licença**
 
 Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-Esse modelo de `README.md` apresenta uma visão clara do propósito do projeto, das tecnologias utilizadas, das funcionalidades e das instruções para rodar o projeto. Além disso, a estrutura de banco de dados e as telas do aplicativo também são descritas, tornando o arquivo útil tanto para desenvolvedores quanto para outros colaboradores que possam se envolver no projeto.
