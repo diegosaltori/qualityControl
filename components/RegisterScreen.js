@@ -12,6 +12,14 @@ export default function RegisterScreen({ navigation }) {
       Alert.alert('Erro', 'Todos os campos são obrigatórios.');
       return false;
     }
+
+    // Validação simples do formato do e-mail
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+      Alert.alert('Erro', 'E-mail inválido.');
+      return false;
+    }
+
     return true;
   };
 
@@ -20,21 +28,15 @@ export default function RegisterScreen({ navigation }) {
 
     db.transaction(tx => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, password TEXT)',
-        [],
+        'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+        [name, email, password],
         () => {
-          tx.executeSql(
-            'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-            [name, email, password],
-            () => {
-              Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-              navigation.navigate('Login');
-            },
-            (txObj, error) => {
-              console.log('Error inserting into table', error);
-              Alert.alert('Erro', 'Ocorreu um erro ao cadastrar o usuário.');
-            }
-          );
+          Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
+          navigation.navigate('Login');
+        },
+        (txObj, error) => {
+          console.log('Error inserting into table', error);
+          Alert.alert('Erro', 'Ocorreu um erro ao cadastrar o usuário.');
         }
       );
     });

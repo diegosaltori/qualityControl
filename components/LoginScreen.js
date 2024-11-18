@@ -6,7 +6,17 @@ export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const validateFields = () => {
+    if (!email || !password) {
+      Alert.alert('Erro', 'E-mail e senha são obrigatórios.');
+      return false;
+    }
+    return true;
+  };
+
   const handleLogin = () => {
+    if (!validateFields()) return;
+
     db.transaction(tx => {
       tx.executeSql(
         'SELECT * FROM users WHERE email = ? AND password = ?',
